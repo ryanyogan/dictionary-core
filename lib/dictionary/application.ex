@@ -3,6 +3,12 @@ defmodule Dictionary.Application do
 
   @impl true
   def start(_type, _args) do
-    Dictionary.WordList.start_link()
+    children = [
+      Dictionary.WordList
+    ]
+
+    opts = [strategy: :one_for_one, name: Dictionary.Supervisor]
+
+    Supervisor.start_link(children, opts)
   end
 end
