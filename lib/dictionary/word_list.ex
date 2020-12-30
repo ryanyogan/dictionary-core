@@ -7,8 +7,7 @@ defmodule Dictionary.WordList do
   end
 
   def word_list do
-    "../../assets/words.txt"
-    |> Path.expand(__DIR__)
+    Application.app_dir(:dictionary, "priv/static/words.txt")
     |> File.read!()
     |> String.split(~r/\n/)
   end
